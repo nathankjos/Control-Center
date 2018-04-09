@@ -1,9 +1,16 @@
 import React from 'react'
+import SideBar from '../SideBar';
+import { Redirect } from 'react-router-dom';
 
 const Home = (props) => {
 	return (
 		<div className='Home'>
-			<h1>Sup</h1>
+			{props.currentUser
+				? (
+				<SideBar />
+				)	:	(
+					<Redirect to='/login' />
+				)}
 		</div>
 	)
 }

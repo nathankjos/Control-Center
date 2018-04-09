@@ -7,6 +7,10 @@ import './styles.css'
 import App from './App'
 
 ReactDOM.render(
-	<Router><App /></Router>,
+	<Router>
+		<div>
+			<App />
+		</div>
+	</Router>,
 	document.getElementById('root')
 )
