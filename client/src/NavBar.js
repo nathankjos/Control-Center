@@ -7,7 +7,7 @@ const NavBar = (props) => {
             <div className='UserCtrls'>
             <Link to='/'>Edit Profile</Link>
             <Link to='/'>Settings</Link>
-            <Link to='/'>Log Out</Link>
+            <Link to='/logout'>Log Out</Link>
             </div>
             <div className='MainNav'>
             nav goes here

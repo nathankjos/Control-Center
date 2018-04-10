@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 import './styles.css';
 
@@ -7,7 +7,8 @@ import Home from './views/Home'
 import httpClient from './httpClient'
 import SignUp from './views/SignUp'
 import LogIn from './views/LogIn'
-// import LogOut from './views/LogOut'
+import LogOut from './views/LogOut'
+import VIP from './views/VIP'
 
 class App extends React.Component {
     state = { currentUser: httpClient.getCurrentUser() }
@@ -29,13 +30,20 @@ class App extends React.Component {
             <Route path="/login" render={(props) => {
               return <LogIn {...props} onLoginSuccess={this.onLoginSuccess.bind(this)} />
             }} />
-            {/* <Route path="/logout" render={(props) => {
+            <Route path="/logout" render={(props) => {
 						  return <LogOut onLogOut={this.logOut.bind(this)} />
-					  }} /> */}
+					  }} />
             <Route path="/signup" render={(props) => {
 						  return <SignUp {...props} onSignUpSuccess={this.onLoginSuccess.bind(this)} />
 					  }} />
-            <Route path='/' component={Home} currentUser={currentUser} />
+            <Route path="/vip" render={() => {
+              return currentUser
+                ? <VIP />
+                : <Redirect to="/login" />
+            }} />
+            <Route path='/' render={()=>{
+              return <Home currentUser={currentUser}/>
+            }} />
           </Switch>
       </div>
     );
