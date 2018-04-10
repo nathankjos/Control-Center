@@ -38,7 +38,8 @@ class SignUp extends React.Component {
 							<input type="text" placeholder="Name" name="name" value={name} />
 							<input type="text" placeholder="Email" name="email" value={email} />
 							<input type="password" placeholder="Password" name="password" value={password} />
-							<button type='submit'>Sign Up</button><Link to='/login'><button type='button'>Have an Account?</button></Link>
+							<button type='submit'>Sign Up</button>
+							<Link to='/login'><button type='button'>Have an Account?</button></Link>
 						</form>
 					</div>
 				</div>

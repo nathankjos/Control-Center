@@ -7,6 +7,7 @@ import Home from './views/Home'
 import httpClient from './httpClient'
 import SignUp from './views/SignUp'
 import LogIn from './views/LogIn'
+// import LogOut from './views/LogOut'
 
 class App extends React.Component {
     state = { currentUser: httpClient.getCurrentUser() }
@@ -28,7 +29,12 @@ class App extends React.Component {
             <Route path="/login" render={(props) => {
               return <LogIn {...props} onLoginSuccess={this.onLoginSuccess.bind(this)} />
             }} />
-            <Route path='/signup' component={SignUp} />
+            {/* <Route path="/logout" render={(props) => {
+						  return <LogOut onLogOut={this.logOut.bind(this)} />
+					  }} /> */}
+            <Route path="/signup" render={(props) => {
+						  return <SignUp {...props} onSignUpSuccess={this.onLoginSuccess.bind(this)} />
+					  }} />
             <Route path='/' component={Home} currentUser={currentUser} />
           </Switch>
       </div>
