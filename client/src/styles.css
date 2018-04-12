@@ -2,10 +2,11 @@ html {
   min-width: 950px;
 }
 .SideBar {
-  background: rgb(170, 75, 75);
+  background: maroon;
   width: 200px;
-  height: 100vh;
-  float:left;
+  height: 100%;
+  position: fixed;
+  float: left;
   border-radius: 3px;
 }
 body {
@@ -27,20 +28,25 @@ body {
 }
 
 .UserCtrls {
-  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
   width: 190px;
-  height: 27px;
+  height: 20px;
   border-radius: 3px;
 }
 .MainNav {
-  height: 570px;
+  height: 99%;
   background: rgba(255, 255, 255, 0.7);
+}
+
+.MainNav a {
+  display: flex;
+  justify-content: center;
 }
 
 .UserCtrls a {
   display: inline-block;
   font-size: 12px;
-  margin: 0 4px;
   width: 55px;
   text-align: center;
   color: black;
@@ -49,6 +55,7 @@ body {
 }
 .Navigation {
   margin: 0 3px 1px 3px;
+  height: 72.75%
 }
 .WelcomeUser {
   background: rgba(255, 255, 255, 0.5);
@@ -61,4 +68,76 @@ body {
 }
 .UserPic small {
   margin-bottom: 5px;
+}
+#btnDiv {
+  display: flex;
+  justify-content: space-between;
+}
+button{
+  font-size: 9px;
+}
+.content {
+  margin-left: 215px;
+}
+.content2 {
+  margin-top: 10px;
+  margin-left: 50px;
+}
+.Categories{
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+.newCategoryBtn{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 20px;
+  margin-left: 10px;
+  height: 20px;
+  width: 20px;
+  padding-left: 3px;
+  padding-top: 2px;
+  font-size: 20px;
+}
+.categoryNameLabel{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: auto;
+}
+.categoryNameInput{
+  display: inline-block;
+  font-size: 15px;
+  color: rgb(76, 135, 173);
+  text-align: center;
+  margin: 0px auto -30px;
+}
+.categoryNameForm{
+  padding: 0 30px;
+}
+li{
+  list-style: none !important;
+}
+li a {
+  text-decoration: none !important;
+  color: gray !important;
+}
+.categoryTitle {
+  display: inline-flex;
+}
+.checkBoxes {
+  margin: 0 0 0 50%;
+  display: inline-flex;
+  flex-direction: column;
+}
+.settingsInput {
+  font-size: 15px;
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+}
+*{
+  font-family: -apple-system 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !important;
+  font-weight: 200;
 }

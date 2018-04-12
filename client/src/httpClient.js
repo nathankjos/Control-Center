@@ -50,12 +50,12 @@ httpClient.logOut = function() {
 	return true
 }
 
-httpClient.getBars = function(){
-	return this({ method: 'get', url: '/api/bars'})
+httpClient.getCategories = function(){
+	return this({ method: 'get', url: '/api/categories'})
 }
 
-httpClient.createBar = function(barFields){
-	return this({ method:'post', url:'/api/bars', data: barFields })
+httpClient.createCategory = function(categoryFields){
+	return this({ method:'post', url:'/api/category', data: categoryFields })
 }
 
 httpClient.defaults.headers.common.token = httpClient.getToken()
