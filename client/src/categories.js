@@ -20,22 +20,23 @@ class Categories extends React.Component {
 
     onInputChange(evt) {
 		this.setState({
+            modal: !this.state.modal,
 			name: {
-				...this.state.name,
-				[evt.target.name]: evt.target.value
+				...this.state.newCategoryName,
+				newCategoryName: evt.target.value
 			}
 		})
     }
     
     onFormSubmit(evt) {
-		evt.preventDefault()
-		httpClient.signUp(this.state.fields).then(user => {
-			this.setState({ fields: { name: '', email: '', password: '' } })
-			if(user) {
-				this.props.onSignUpSuccess(user)
-				console.log(user)
-				this.props.history.push('/')
-			}
+        evt.preventDefault()
+        const data = { name: evt.target[0].value }
+		httpClient.createCategory(data).then(serverResponse => {
+            console.log(serverResponse.data)
+            this.setState({ 
+                newCategoryName: '',
+                modal: !this.state.modal
+            })
 		})
 	}
   
@@ -47,7 +48,10 @@ class Categories extends React.Component {
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                 <div className='categoryNameForm'>
                     <h3 className='categoryNameLabel'>New Category Name:</h3>
-                    <Form className='categoryNameForm'><Input className='categoryNameInput' name="newCategoryName"  placeholder="Name of New Category" /></Form>
+                    <Form onSubmit={this.onFormSubmit.bind(this)}className='categoryNameForm'>
+                        <Input className='categoryNameInput' name="newCategoryName"  placeholder="Name of New Category" />
+                        <Input type='submit' value='save' />
+                    </Form>
                 </div>
                 <ModalFooter>
                 <Button color="primary" onClick={this.toggle}>Save</Button>{' '}

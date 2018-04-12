@@ -1,73 +1,78 @@
 html {
   min-width: 950px;
+  background: rgba(74, 0, 117, 0.1);
 }
 .SideBar {
-  background: maroon;
+  background: rgba(128, 0, 0, 0.9);
   width: 200px;
   height: 100%;
   position: fixed;
   float: left;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 body {
   margin: 0;
 }
 .UserPic {
-  background: white;
-  height: 190px;
-  width: 190px;
-  margin: 5px 0px 3px 5px;
+  background: rgba(255, 255, 255, .5);
+  height: 192px;
+  width: 192px;
   border-radius: 5px;
+  margin: 4px 0px 4px 4px;
   align-items: flex-end;
   justify-content: center;
 }
 .UserCtrls, .MainNav {
   width: 190px;
-  margin: 3px auto;
-  border-radius: 3px;
+  margin: 5px auto;
+  border-radius: 5px;
 }
-
 .UserCtrls {
   display: flex;
   justify-content: space-between;
-  width: 190px;
+  align-items: center;
   height: 20px;
-  border-radius: 3px;
 }
 .MainNav {
-  height: 99%;
+  height: 98%;
   background: rgba(255, 255, 255, 0.7);
 }
 
 .MainNav a {
   display: flex;
   justify-content: center;
+  font-size: 23px;
+  color: rgba(100, 100, 100, 0.9);
+  text-decoration: none;
 }
 
 .UserCtrls a {
   display: inline-block;
-  font-size: 12px;
-  width: 55px;
+  font-size: 15px;
+  width: 94px;
   text-align: center;
   color: black;
   background: rgba(255, 255, 255, 0.6);
   border-radius: 5px;
+  text-decoration: none;
 }
 .Navigation {
   margin: 0 3px 1px 3px;
   height: 72.75%
 }
 .WelcomeUser {
-  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 3px;
   height: 15px;
+  padding: 3px;
   align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 3px;
 }
 .flex-container {
   display: flex;
-}
-.UserPic small {
-  margin-bottom: 5px;
 }
 #btnDiv {
   display: flex;
@@ -133,11 +138,29 @@ li a {
 }
 .settingsInput {
   font-size: 15px;
-  width: 500px;
+  width: 500px !important;
   display: flex;
   justify-content: space-between;
 }
 *{
   font-family: -apple-system 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !important;
   font-weight: 200;
+}
+.logout{
+  float: left;
+  margin-left: 1px;
+  width: 0px;
+}
+.logout a {
+  color: red;
+  margin-left: 3px;
+  padding: 0 5px;
+  font-weight: 400;
+  font-size: 20px;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+}
+.App{
+  background: rgba(74, 0, 117, 0.1);
 }

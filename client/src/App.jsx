@@ -15,7 +15,8 @@ class App extends React.Component {
     state = { 
       currentUser: httpClient.getCurrentUser(),
       showMusic: false,
-      showClock: false
+      showClock: false,
+      links: []
     }
 
     onLoginSuccess(user) {

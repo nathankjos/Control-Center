@@ -6,7 +6,7 @@ module.exports = {
 			res.json(categories)
 		})
 	},
-
+	
 	show: (req, res) => {
 		console.log("Current Category:")
 		console.log(req.Category)
@@ -17,6 +17,9 @@ module.exports = {
 
 	create: (req, res) => {
 		Category.create(req.body, (err, category) => {
+			console.log("did it create?")
+			console.log(err)
+			console.log(category)
 			if(err) return res.json({success: false, code: err.code})
 			res.json({success: true, message: "Category created."})
 		})

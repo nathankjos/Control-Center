@@ -5,15 +5,14 @@ const NavBar = (props) => {
     return (
         <div className='Navigation'>
             <div className='UserCtrls'>
-                <Link to='/'>Edit Profile</Link>
-                <Link to='/settings'>Settings</Link>
-                <Link to='/logout'>Log Out</Link>
+                <Link to='/settings'><span>Settings</span></Link>
+                <Link to='/categories'><span>Categories</span></Link>
             </div>
 
             <div className='MainNav'>
-                <br /><Link to='/categories'>Organized Browser</Link><hr />
-                <Link to='/'>Music</Link><hr />
-                <Link to='/'>Clock</Link><hr />
+                <br /><Link to='/'>Selected Category</Link><hr />
+                <Link to='/'>Selected Category</Link><hr />
+                <Link to='/'>Selected Category</Link><hr />
             </div>
         </div>
     )
