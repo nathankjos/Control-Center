@@ -20,6 +20,7 @@ httpClient.logIn = function(credentials) {
 		.then((serverResponse) => {
 			const token = serverResponse.data.token
 			if(token) {
+				console.log(token)
 				this.defaults.headers.common.token = this.setToken(token)
 				return jwtDecode(token)
 			} else {

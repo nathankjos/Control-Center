@@ -47,8 +47,8 @@ class Categories extends React.Component {
         })
     }
 
-    deleteCategory() {
-        console.log()
+    deleteCategory(id) {
+        console.log(id)
     }
 
     onInputChange(evt) {
@@ -110,7 +110,7 @@ class Categories extends React.Component {
                                         <div><h3>{c.name}</h3></div>
                                     </Link>
                                 </li>
-                                <Button className={`selector ${deleteBtn}`} color='danger' onClick={this.deleteCategory.bind(this)}>Delete</Button>
+                                <Button className={`selector ${deleteBtn}`} color='danger' onClick={this.deleteCategory.bind(this, c._id)}>Delete</Button>
                             </div>
                         )
                     })}
