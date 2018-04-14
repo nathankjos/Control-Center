@@ -1,28 +1,48 @@
 import React from 'react'
 import httpClient from '../httpClient'
+const currentUser = httpClient.getCurrentUser()
 
 class Settings extends React.Component {
 	state = {
-		fields: { name: '', email: '', imageUrl: ''}
+		fields: { 
+            imageUrl: currentUser.imageUrl,
+            name: currentUser.name,
+            email: currentUser.email
+        }
+    }
+    handleEditClick(){
+        this.setState({
+            modalOpen: true
+        })
+    }
+    onInputChange(evt) {
+		this.setState({
+			fields: {
+				...this.state.fields,
+				[evt.target.name]: evt.target.value
+			}
+		})
 	}
 	onFormSubmit(evt) {
-		evt.preventDefault()
-		httpClient.updateUser(this.state.fields).then(user => {
+        evt.preventDefault()
+        // const { name, imageUrl, email } = this.state.fields
+		httpClient.updateUser(currentUser._id, this.state.fields).then(user => {
+                this.props.updateCurrentUser(user.data.token)
 				this.props.history.push('/settings')
 		})
 	}
     render(){
-    const { name, imageUrl, email } = httpClient.getCurrentUser()
+    const { name, imageUrl, email } = currentUser
         return(
             <div className='Settings'>
                 <div className='row'>
 					<div className='column column-33 column-offset-33'>
                         <h1 className='categoryTitle'>Settings</h1>
-                        <form onSubmit={this.onFormSubmit.bind(this)}>
-                            <div>Profile Picture:   <input className='settingsInput' type='text' name='CurrentPic' placeholder={imageUrl}/></div>
-                            <div>Name:   <input className='settingsInput' type='text' name='CurrentName' placeholder={name}/></div>
-                            <div>LogIn Username/Email:   <input className='settingsInput' type='text' name='CurrentLogIn' placeholder={email}/></div>
-                            <div>Password:   <input className='settingsInput' name='CurrentPassword' type='password' placeholder='* * * * * * * * * * * * *'/></div>
+                        <form onChange={this.onInputChange.bind(this)} onSubmit={this.onFormSubmit.bind(this)}>
+                            <div>Profile Picture:   <input className='settingsInput' type='text' name='imageUrl' placeholder={imageUrl}/></div>
+                            <div>Name:   <input className='settingsInput' type='text' name='name' placeholder={name}/></div>
+                            <div>LogIn Username/Email:   <input className='settingsInput' type='text' name='email' placeholder={email}/></div>
+                            {/* <div>Password:   <input className='settingsInput' name='password' type='password' placeholder='* * * * * * * * * * * * *'/></div> */}
                             {/* <div><input type='checkbox' /><span>  Show Music Box</span></div>
                             <div><input type='checkbox' /><span>  Show Clock Box</span></div> */}
                             <div id='btnDiv'>

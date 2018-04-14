@@ -24,7 +24,7 @@ app.get('/api', (req, res) => {
 })
 
 app.use('/api/users', usersRoutes)
-app.use('/api/category', categoriesRoutes)
+app.use('/api/categories', categoriesRoutes)
 
 app.listen(PORT, (err) => {
 	console.log(err || `Server running on port ${PORT}.`)

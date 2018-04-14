@@ -4,7 +4,9 @@ const
 		name: { type: String, required: true },
 		notes: [],
 		links: [],
-		toDoListItems: []
+		toDoListItems: [],
+		inNav: {type: Boolean, default: false },
+		user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 	})
 
 const Category = mongoose.model('Category', categorySchema)

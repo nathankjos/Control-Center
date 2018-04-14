@@ -34,7 +34,8 @@ body {
   height: 20px;
 }
 .MainNav {
-  height: 98%;
+  height: 99%;
+  border-bottom: 3px solid maroon;
   background: rgba(255, 255, 255, 0.7);
 }
 
@@ -151,16 +152,89 @@ li a {
   margin-left: 1px;
   width: 0px;
 }
-.logout a {
+.logout button {
+  padding: 5px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
   color: red;
-  margin-left: 3px;
-  padding: 0 5px;
+  margin: 4px 5px 0 3px;
   font-weight: 400;
   font-size: 20px;
   text-decoration: none;
   background: rgba(255, 255, 255, 0.6);
   border-radius: 5px;
+  border-color: transparent;
 }
 .App{
   background: rgba(74, 0, 117, 0.1);
+}
+.panel{
+  width: 48%
+}
+.ToDoList {
+  background: white;
+  margin-right: 0px;
+  height: 75vh;
+}
+.LinksAndNotes {
+  background: white;
+  height: 50%;
+  border: 1px solid black;
+}
+.content3 {
+  display: flex;
+  align-content: flex-start;
+}
+.newLink, .newNote, .newToDoItem {
+  height: 50%;
+  margin-top: 10px;
+}
+ul{
+  margin-left: 10px;
+  height: 100%;
+}
+.logOutModal{
+  padding: 20px;
+}
+.logOutBtn {
+  float: right;
+  margin-right: 20px;
+
+}
+.categoryName h3 {
+  width: 150px;
+  height: 70px;
+}
+.categoryName {
+  display: flex;
+  flex-direction: row;
+  width: 250px;
+  padding: 0px;
+  margin: 10px;
+}
+.editCategories {
+  display: flex;
+  justify-content: space-between;
+  width: 225px;
+  float: right;
+  margin-right: 20px;
+}
+.selector{
+  font-size: 7px;
+  width: 60px;
+  padding: 5px;
+  margin: 5px;
+  height: 25px;
+}
+.allCategories {
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+.hideBtn{
+  display: none;
 }

@@ -6,18 +6,15 @@ const httpClient = axios.create()
 httpClient.getToken = function() {
 	return localStorage.getItem('token')
 }
-
 httpClient.setToken = function(token) {
 	localStorage.setItem('token', token)
 	return token
 }
-
 httpClient.getCurrentUser = function() {
 	const token = this.getToken()
 	if(token) return jwtDecode(token)
 	return null
 }
-
 httpClient.logIn = function(credentials) {
 	return this({ method: 'post', url: '/api/users/authenticate', data: credentials })
 		.then((serverResponse) => {
@@ -30,7 +27,6 @@ httpClient.logIn = function(credentials) {
 			}
 		})
 }
-
 httpClient.signUp = function(userInfo) {
 	return this({ method: 'post', url: '/api/users', data: userInfo})
 		.then((serverResponse) => {
@@ -43,19 +39,34 @@ httpClient.signUp = function(userInfo) {
 			}
 		})
 }
-
+httpClient.updateUser = function(id, userInfo) {
+	return this({ method: 'patch', url: `/api/users/${id}`, data: userInfo})
+}
 httpClient.logOut = function() {
 	localStorage.removeItem('token')
 	delete this.defaults.headers.common.token
 	return true
 }
 
+
+
 httpClient.getCategories = function(){
 	return this({ method: 'get', url: '/api/categories'})
 }
-
+httpClient.getCategory = function(id){
+	return this({ method: 'get', url: `/api/categories/${id}`})
+}
 httpClient.createCategory = function(categoryFields){
-	return this({ method:'post', url:'/api/category', data: categoryFields })
+	return this({ method:'post', url:'/api/categories', data: categoryFields })
+}
+httpClient.addCategoryToNav = function(category) {
+	return this({ method: 'patch', url: `/api/categories/${category}`})
+}
+httpClient.updateNavBarLinks = function(categories) {
+	return this({ method: 'patch', url: `/api/categories`, data: categories})
+}
+httpClient.deleteCategory = function(category) {
+	return this({ method: 'delete', url: `/api/categories/${category.id}`})
 }
 
 httpClient.defaults.headers.common.token = httpClient.getToken()

@@ -6,7 +6,7 @@ const
 		email: { type: String, required: true, unique: true },
 		password: { type: String, required: true },
 		links: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],
-		imageUrl: {type: String, default: 'https://media.giphy.com/media/G3lxvBMhGu53y/source.gif'}
+		imageUrl: {type: String, required: true, default: 'https://media.giphy.com/media/G3lxvBMhGu53y/source.gif'}
 	})
 
 userSchema.methods.generateHash = function(password) {

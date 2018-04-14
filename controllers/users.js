@@ -26,9 +26,14 @@ module.exports = {
 
 	update: (req, res) => {
 		User.findById(req.params.id, (err, user) => {
+			console.log(req.body)
+			if(req.body.imageUrl.includes(' ') || req.body.imageUrl === ''){
+				req.body.imageUrl = 'https://media.giphy.com/media/G3lxvBMhGu53y/source.gif'
+			}
 			Object.assign(user, req.body)
 			user.save((err, updatedUser) => {
-				res.json({success: true, message: "User updated.", user})
+				const token = signToken(updatedUser)
+				res.json({success: true, message: "User updated.", user: updatedUser, token})
 			})
 		})
 	},
