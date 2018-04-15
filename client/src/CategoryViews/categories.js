@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Modal, Form, Input } from 'reactstrap'
-import httpClient from './httpClient'
+import httpClient from '../httpClient'
 
 class Categories extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        categories: [],
+        categories: this.props.categories,
         newCategoryName: '',
         navBtn: false,
         deleteBtn: false,
@@ -36,8 +36,7 @@ class Categories extends React.Component {
 
     addCategoryToNav(c) {
         httpClient.addCategoryToNav(c._id).then((serverResponse) => {
-            console.log(serverResponse)
-            this.props.onAddCategoryToNavBar()
+            this.props.onUpdateCategories()
         })
     }
 
@@ -48,7 +47,9 @@ class Categories extends React.Component {
     }
 
     deleteCategory(id) {
-        console.log(id)
+        httpClient.deleteCategory(id).then((serverResponse) => {
+            this.props.onUpdateCategories()
+        })
     }
 
     onInputChange(evt) {
@@ -65,7 +66,6 @@ class Categories extends React.Component {
         evt.preventDefault()
         const data = { name: evt.target[0].value }
 		httpClient.createCategory(data).then(serverResponse => {
-            console.log(serverResponse)
             this.setState({ 
                 categories:[...this.state.categories, serverResponse.data.category],
                 newCategoryName: '',

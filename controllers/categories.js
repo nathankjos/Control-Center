@@ -8,9 +8,7 @@ module.exports = {
 	},
 	
 	show: (req, res) => {
-		console.log(req.params)
 		Category.findById(req.params.id, (err, category) => {
-			console.log(category, "%%%%%%%%")
 			res.json(category)
 		})
 	},

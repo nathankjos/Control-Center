@@ -4,25 +4,27 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import './styles.css';
 
 import httpClient from './httpClient'
-import SignUp from './views/SignUp'
-import LogIn from './views/LogIn'
-import LogOut from './views/LogOut'
-import Settings from './views/Settings'
-import Categories from './categories'
-import CategoryTemplate from './CategoryTemplate'
-import SideBar from './SideBar';
+import SignUp from './UserViews/SignUp'
+import LogIn from './UserViews/LogIn'
+import LogOut from './UserViews/LogOut'
+import Settings from './UserViews/Settings'
+import Categories from './CategoryViews/categories'
+import SelectedCategory from './CategoryViews/SelectedCategory'
+import SideBar from './Navigation/SideBar';
 
 class App extends React.Component {
     state = { 
       currentUser: httpClient.getCurrentUser(),
       showMusic: false,
       showClock: false,
-      categoryLinks: []
+      categoryLinks: [],
+      categories: []
     }
 
     getCategories() {
       httpClient.getCategories().then((serverResponse) => {
         this.setState({
+          categories: serverResponse.data,
           categoryLinks: serverResponse.data.filter((c) => {
             return c.inNav
           })
@@ -57,7 +59,7 @@ class App extends React.Component {
     }
 
   render() {
-      const { currentUser, categoryLinks } = this.state
+      const { currentUser, categoryLinks, categories } = this.state
     return (
       <div className="App">
           {currentUser && <SideBar currentUser={currentUser} categoryLinks={categoryLinks}/> }
@@ -75,9 +77,9 @@ class App extends React.Component {
             <Route path='/settings' render={(props) => {
 						  return <Settings {...props} updateCurrentUser = {this.updateCurrentUser.bind(this)}/>
 					  }} />
-            <Route path='/categories/:id' component={CategoryTemplate} />
+            <Route path='/categories/:id' component={SelectedCategory} />
             <Route path='/categories' render={(props) => {
-              return <Categories {...props} onAddCategoryToNavBar={this.getCategories.bind(this)} />
+              return <Categories {...props} onUpdateCategories={this.getCategories.bind(this)} categories={categories} />
             }} />
             <Route path="/logout" render={(props) => {
 						  return <LogOut onLogOut={this.logOut.bind(this)} />

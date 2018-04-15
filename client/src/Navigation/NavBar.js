@@ -1,5 +1,5 @@
 import React from 'react'
-import httpClient from './httpClient'
+import httpClient from '../httpClient'
 import { Link } from 'react-router-dom'
 
 const NavBar = (props) => {

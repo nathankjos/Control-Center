@@ -20,7 +20,7 @@ httpClient.logIn = function(credentials) {
 		.then((serverResponse) => {
 			const token = serverResponse.data.token
 			if(token) {
-				console.log(token)
+				// console.log(token)
 				this.defaults.headers.common.token = this.setToken(token)
 				return jwtDecode(token)
 			} else {
@@ -66,9 +66,19 @@ httpClient.addCategoryToNav = function(category) {
 httpClient.updateNavBarLinks = function(categories) {
 	return this({ method: 'patch', url: `/api/categories`, data: categories})
 }
-httpClient.deleteCategory = function(category) {
-	return this({ method: 'delete', url: `/api/categories/${category.id}`})
+httpClient.deleteCategory = function(id) {
+	return this({ method: 'delete', url: `/api/categories/${id}`})
 }
+httpClient.saveToDoList = function(item, id) {
+	return this({ method: 'post', url: `/api/categories/${id}`, data: item})
+}
+httpClient.saveNotes = function(note, id) {
+	return this({ method: 'post', url: `/api/categories/${id}`, data: note})
+}
+httpClient.saveLinks = function(link, id) {
+	return this({ method: 'post', url: `/api/categories/${id}`, data: link})
+}
+
 
 httpClient.defaults.headers.common.token = httpClient.getToken()
 export default httpClient

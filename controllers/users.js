@@ -9,8 +9,6 @@ module.exports = {
 	},
 
 	show: (req, res) => {
-		console.log("Current User:")
-		console.log(req.user)
 		User.findById(req.params.id, (err, user) => {
 			res.json(user)
 		})
@@ -26,7 +24,6 @@ module.exports = {
 
 	update: (req, res) => {
 		User.findById(req.params.id, (err, user) => {
-			console.log(req.body)
 			if(req.body.imageUrl.includes(' ') || req.body.imageUrl === ''){
 				req.body.imageUrl = 'https://media.giphy.com/media/G3lxvBMhGu53y/source.gif'
 			}

@@ -15,8 +15,8 @@ class SideBar extends React.Component {
     }
     
     toggle() {
-        console.log("show confirm modal")
-            console.log(this.state.modal)
+        // console.log("show confirm modal")
+            // console.log(this.state.modal)
         this.setState({
             modal: !this.state.modal
         });

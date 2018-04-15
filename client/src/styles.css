@@ -189,7 +189,7 @@ li a {
   align-content: flex-start;
 }
 .newLink, .newNote, .newToDoItem {
-  height: 50%;
+  height: 25px;
   margin-top: 10px;
 }
 ul{
@@ -218,9 +218,8 @@ ul{
 .editCategories {
   display: flex;
   justify-content: space-between;
-  width: 225px;
-  float: right;
-  margin-right: 20px;
+  width: 48%;
+  margin-left: 52%;
 }
 .selector{
   font-size: 7px;
