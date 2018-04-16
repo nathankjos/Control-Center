@@ -19,7 +19,6 @@ httpClient.logIn = function(credentials) {
 	return this({ method: 'post', url: '/api/users/authenticate', data: credentials })
 		.then((serverResponse) => {
 			const token = serverResponse.data.token
-			console.log(token)
 			if(token) {
 				this.defaults.headers.common.token = this.setToken(token)
 				return jwtDecode(token)
@@ -66,6 +65,9 @@ httpClient.updateNavBarLinks = function(categories) {
 }
 httpClient.deleteCategory = function(id) {
 	return this({ method: 'delete', url: `/api/categories/${id}`})
+}
+httpClient.updateCategory = function(id, newName) {
+	return this({ method: 'patch', url: `/api/categories`, data: newName})
 }
 httpClient.saveToDoList = function(item, id) {
 	return this({ method: 'post', url: `/api/categories/${id}`, data: item})

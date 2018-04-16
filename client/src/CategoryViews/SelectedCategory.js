@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from 'reactstrap'
 import httpClient from '../httpClient'
 import ToDoList from './ToDoList/ToDoList'
 import Links from './Links/Links'
@@ -40,21 +39,6 @@ class Categories extends React.Component {
             linksAndNotesPanel: false,
         })
     }
-
-    editCategory(){
-        console.log('Clicked')
-    }
-    // onFormSubmit(evt) {
-    //     evt.preventDefault()
-    //     const data = { name: evt.target[0].value }
-	// 	httpClient.createCategory(data).then(serverResponse => {
-    //         this.setState({ 
-    //             categories:[...this.state.categories, serverResponse.data.category],
-    //             newToDo: '',
-    //             modal: !this.state.modal
-    //         })
-	// 	})
-    // }
     
     saveToDoList(){
         httpClient.saveToDoList()
@@ -65,7 +49,6 @@ class Categories extends React.Component {
         <div className='content'>
             <div className='CategoryNameTitle'>
                 <h1 className='categoryTitle'>{this.state.category.name}</h1>
-                <Button color='primary' className='editCategoryName'>edit</Button>
                 <div className='LinksAndNotesBtns'><button onClick={this.toggleLinks.bind(this)}>Links</button> <button onClick={this.toggleNotes.bind(this)}> Notes </button></div>
             </div>
 
