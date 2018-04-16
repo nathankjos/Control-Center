@@ -23,10 +23,10 @@ As a User I am able to add new Categories that are fully customizable with impor
 
 First I planned out all of the views I would need, along with the information each view would require, then I created the wireframes for all of the views, and created the models. Then I created a settings page to update user info, and made it so all information in the app was stored in the server database in each specific user. Finally I styled everything to look clean and organized.
 
-<img width="450" alt="screenshot" src="./Project4Pics/1">
-<img width="450" alt="screenshot" src="./Project4Pics/2">
-<img width="450" alt="screenshot" src="./Project4Pics/3">
-<img width="450" alt="screenshot" src="./Project4Pics/4">
+<img width="450" alt="screenshot" src="Project4Pics/1">
+<img width="450" alt="screenshot" src="Project4Pics/2">
+<img width="450" alt="screenshot" src="Project4Pics/3">
+<img width="450" alt="screenshot" src="Project4Pics/4">
 
 
 ### Future Improvements

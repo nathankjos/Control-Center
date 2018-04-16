@@ -102,8 +102,8 @@ class Categories extends React.Component {
     render() {
         const { categories } = this.props
         const categoryName = categories.filter((c) => {
-            return c._id == this.props.match.params.id
-            console.log(c._id == this.props.match.params.id)
+            console.log(c._id === this.props.match.params.id)
+            return c._id === this.props.match.params.id
         })
         console.log(categoryName)
         return (
