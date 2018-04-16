@@ -4,7 +4,7 @@ const LinksList = props => (
     <ul className='LinksList'>
         {
             props.items.map((item) => {
-                return <a href={`http://www.${item.toString()}`} key={item.toString()}>{item}</a>
+                return <li><span> </span><a href={`http://www.${item.toString()}   `} key={item.toString()}>{item.item}</a></li>
             })
         }
     </ul>

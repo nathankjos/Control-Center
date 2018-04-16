@@ -63,6 +63,11 @@ class App extends React.Component {
       this.setState({ currentUser: null })
     }
 
+    // Move to selectedCategory.js?
+    saveEditedCategoryName(newName){
+      //find the id of the category to be edited, and update the name with the desired value ()
+    }
+
   render() {
       const { currentUser, categoryLinks, categories } = this.state
     return (
@@ -83,7 +88,9 @@ class App extends React.Component {
             <Route path='/settings' render={(props) => {
 						  return <Settings {...props} updateCurrentUser = {this.updateCurrentUser.bind(this)}/>
 					  }} />
-            <Route path='/categories/:id' component={SelectedCategory} />
+            <Route path='/categories/:id' render={(props) => {
+              return <SelectedCategory {...props} saveEditedCategoryName={this.saveEditedCategoryName.bind(this)} categories={categories}/>
+            }} />
             <Route path='/categories' render={(props) => {
               return <Categories {...props} onUpdateCategories={this.getCategories.bind(this)} categories={categories} />
             }} />

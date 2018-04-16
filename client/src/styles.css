@@ -334,3 +334,6 @@ ul{
   flex-direction: column;
   justify-content: center;
 }
+.editCategoryInput {
+  font-size: 20px;
+}

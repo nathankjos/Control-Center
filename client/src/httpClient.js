@@ -66,17 +66,17 @@ httpClient.updateNavBarLinks = function(categories) {
 httpClient.deleteCategory = function(id) {
 	return this({ method: 'delete', url: `/api/categories/${id}`})
 }
-httpClient.updateCategory = function(id, newName) {
-	return this({ method: 'patch', url: `/api/categories`, data: newName})
+httpClient.updateCategory = function(newName, id) {
+	return this({ method: 'patch', url: `/api/categories/${id}`, data: newName})
 }
 httpClient.saveToDoList = function(item, id) {
-	return this({ method: 'post', url: `/api/categories/${id}`, data: item})
+	return this({ method: 'post', url: `/api/categories/${id}/todos`, data: item})
 }
 httpClient.saveNotes = function(note, id) {
-	return this({ method: 'post', url: `/api/categories/${id}`, data: note})
+	return this({ method: 'post', url: `/api/categories/${id}/notes`, data: note})
 }
 httpClient.saveLinks = function(link, id) {
-	return this({ method: 'post', url: `/api/categories/${id}`, data: link})
+	return this({ method: 'post', url: `/api/categories/${id}/links`, data: link})
 }
 
 httpClient.defaults.headers.common.token = httpClient.getToken()

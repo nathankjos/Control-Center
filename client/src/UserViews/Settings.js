@@ -10,11 +10,6 @@ class Settings extends React.Component {
             email: currentUser.email
         }
     }
-    handleEditClick(){
-        this.setState({
-            modalOpen: true
-        })
-    }
     onInputChange(evt) {
 		this.setState({
 			fields: {
@@ -25,7 +20,6 @@ class Settings extends React.Component {
 	}
 	onFormSubmit(evt) {
         evt.preventDefault()
-        // const { name, imageUrl, email } = this.state.fields
 		httpClient.updateUser(currentUser._id, this.state.fields).then(user => {
                 this.props.updateCurrentUser(user.data.token)
 				this.props.history.push('/settings')

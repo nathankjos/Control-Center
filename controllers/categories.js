@@ -35,4 +35,30 @@ module.exports = {
 			res.json({success: true, message: "Category deleted.", category})
 		})
 	},
+
+	addTodoToCategory: (req, res) => {
+		Category.findById(req.params.id, (err, category) => {
+			category.toDoListItems.push(req.body)
+			category.save((err, updatedCategory) => {
+				res.json({ success: true, message: "ToDo added.", category: updatedCategory})
+			})
+		})
+	},
+
+	addNoteToCategory: (req, res) => {
+		Category.findById(req.params.id, (err, category) => {
+			category.notes.push(req.body)
+			category.save((err, updatedCategory) => {
+				res.json({ success: true, message: "Note added.", category: updatedCategory})
+			})
+		})
+	},
+	addLinkToCategory: (req, res) => {
+		Category.findById(req.params.id, (err, category) => {
+			category.links.push(req.body)
+			category.save((err, updatedCategory) => {
+				res.json({ success: true, message: "Link added.", category: updatedCategory})
+			})
+		})
+	}
 }

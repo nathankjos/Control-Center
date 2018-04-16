@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
+import httpClient from '../../httpClient';
 import NotesList from './NotesList'
 
 class Notes extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            input: '',
-            items: []
-        }
+        this.state = {input: ''}
     }
     onChange = (evt) => {
         this.setState({input: evt.target.value});
@@ -15,10 +13,13 @@ class Notes extends Component {
 
     onSubmit = (evt) => {
         evt.preventDefault()
-        this.setState({
-            input: '',
-            items: [...this.state.items, this.state.input]
-        });
+        const data = { item: this.state.input }
+        httpClient.saveNotes(data, this.props.categoryId).then((serverResponse) => {
+            this.props.onAddNote(serverResponse.data.category.notes)
+            this.setState({
+                input: ''
+            })
+        })
     }
 
     render() {
@@ -27,12 +28,12 @@ class Notes extends Component {
                 <div className='ListDiv'>
                     <span className='notesLabel'>Notes</span>
                     <div className='clearfix' />
-                    <form className='ListForm' onSubmit={this.onSubmit}>
-                        <input value={this.state.input} onChange={this.onChange} />
-                        <button>Submit</button>
-                    </form>
+                        <form className='ListForm' onSubmit={this.onSubmit}>
+                            <input value={this.state.input} onChange={this.onChange} />
+                            <button>Submit</button>
+                        </form>
                 </div>
-                    <NotesList items={this.state.items} />
+                <NotesList notes={this.props.notes} />
             </div>
         )
     }

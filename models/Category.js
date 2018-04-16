@@ -4,13 +4,13 @@ const
         item: String
 	}),
 	NotesSchema = new mongoose.Schema({
-        note: String
+        item: String
 	}),
 	LinksSchema = new mongoose.Schema({
-        link: String
+        item: String
     }),
 	categorySchema = new mongoose.Schema({
-		name: { type: String, required: true },
+		name: { type: String, required: true, default: 'category' },
 		notes: [NotesSchema],
 		links: [LinksSchema],
 		toDoListItems: [ToDoListSchema],

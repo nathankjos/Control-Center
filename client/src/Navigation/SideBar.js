@@ -6,7 +6,6 @@ class SideBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            categoryLinks: this.props.categoryLinks,
             currentUser: this.props.currentUser,
             newCategoryName: '',
             modal: false
@@ -21,8 +20,6 @@ class SideBar extends React.Component {
     }
 
     logOutUser() {
-        this.setState({categoryLinks: [] })
-        console.log(this.props)
         this.props.history.push('/logout')
     }
 

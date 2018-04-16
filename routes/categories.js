@@ -16,4 +16,8 @@ categoriesRouter.route('/:id')
 	.patch(categoriesCtrl.update)
 	.delete(categoriesCtrl.destroy)
 
+categoriesRouter.post('/:id/todos', categoriesCtrl.addTodoToCategory)
+categoriesRouter.post('/:id/notes', categoriesCtrl.addNoteToCategory)
+categoriesRouter.post('/:id/links', categoriesCtrl.addLinkToCategory)
+
 module.exports = categoriesRouter

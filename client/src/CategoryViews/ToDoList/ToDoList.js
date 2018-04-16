@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import List from './List'
 import httpClient from '../../httpClient';
+import List from './List'
 
 class ToDoList extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            input: '',
-            items: []
-        }
+        this.state = { input: '' }
     }
     onChange = (evt) => {
         this.setState({input: evt.target.value});
@@ -17,12 +14,11 @@ class ToDoList extends Component {
     onSubmit = (evt) => {
         evt.preventDefault()
         const data = { item: this.state.input }
-        console.log(this.state.input)
-        console.log(this.props)
-        httpClient.saveToDoList(data, this.props).then((serverResponse) => {
+        console.log(data)
+        httpClient.saveToDoList(data, this.props.categoryId).then((serverResponse) => {
+            this.props.onAddTodo(serverResponse.data.category.toDoListItems)
             this.setState({
-                input: '',
-                items: [...this.state.items, serverResponse.data]
+                input: ''
             })
         })
     }
@@ -31,14 +27,14 @@ class ToDoList extends Component {
         return (
             <div className='panelDiv'>
                 <div className='ListDiv'>
-                    <span className='notesLabel'>To Do</span>
+                    <span className='notesLabel'>To Do List</span>
                     <div className='clearfix' />
                         <form className="ListForm" onSubmit={this.onSubmit} label='toDoList'>
                             <input value={this.state.input} onChange={this.onChange} />
                             <button>Submit</button>
                         </form>
                 </div>
-                <List items={this.state.items} />
+                <List items={this.props.toDoList} />
             </div>
         )
     }

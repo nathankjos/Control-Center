@@ -6,8 +6,7 @@ class Links extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            input: '',
-            items: []
+            input: ''
         }
     }
     onChange = (evt) => {
@@ -16,13 +15,13 @@ class Links extends Component {
 
     onSubmit = (evt) => {
         evt.preventDefault()
-        this.setState({
-            input: '',
-            items: [...this.state.items, this.state.input]
+        const data = { item: this.state.input }
+        httpClient.saveLinks(data, this.props.categoryId).then((serverResponse) => {
+            this.props.onAddLink(serverResponse.data.category.links)
+            this.setState({
+                input: ''
+            })
         })
-        httpClient.saveToDoList(this.state.items).then(
-            
-        )
     }
 
     render() {
@@ -36,7 +35,7 @@ class Links extends Component {
                         <button>Submit</button>
                     </form>
                 </div>
-                <LinksList items={this.state.items} />
+                    <LinksList items={this.props.links} />
             </div>
         )
     }
