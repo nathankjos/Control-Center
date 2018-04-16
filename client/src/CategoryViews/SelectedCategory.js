@@ -101,11 +101,17 @@ class Categories extends React.Component {
 
     render() {
         const { categories } = this.props
+        const categoryName = categories.filter((c) => {
+            return c._id == this.props.match.params.id
+            console.log(c._id == this.props.match.params.id)
+        })
+        console.log(categoryName)
         return (
         <div className='content'>
             <div className='CategoryNameTitle'>
             {console.log(this.props.categories)}
-                <h1 className='categoryTitle'>{categories.filter(categories._id == this.props.match.params.id)}</h1>
+                <h1 className='categoryTitle'> {categoryName[0] && categoryName[0].name}
+                </h1>
                 <div className='LinksAndNotesBtns'>
                     {/* <Button onClick={this.deleteListItems.bind(this)} color='danger' className={`selector ${deleteBtn}`}>Delete Selected Items</Button> */}
                     <Button onClick={this.toggleEditModal.bind(this)} color='info'>Edit Category</Button>
@@ -118,7 +124,7 @@ class Categories extends React.Component {
                 <div className='categoryNameForm'>
                     <h3 className='categoryNameLabel'>Edit Category Name:</h3>
                     <Form onSubmit={this.onEditFormSubmit.bind(this)}className='categoryNameForm'>
-                        <Input className='editCategoryInput input' name="editCategoryName"  placeholder={this.props.match.params} />
+                        <Input className='editCategoryInput input' name="editCategoryName"  placeholder={categoryName[0] && categoryName[0].name} />
                         <div className='newCategoryBtnsDiv'>
                             <Button color="primary" type='submit'>Save</Button>
                             <Button color="secondary" onClick={this.toggleEditModal.bind(this)}>Cancel</Button>

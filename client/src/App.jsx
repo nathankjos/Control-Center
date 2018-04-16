@@ -23,9 +23,14 @@ class App extends React.Component {
     }
 
     getCategories() {
+      //filter categories to be only the categories of the current user
+      const currentUserCategories = categories.filter((c) => {
+        console.log(c._id == this.props.match.params.id)
+        if(c._id == this.props.match.params.id) return c
+      })
       httpClient.getCategories().then((serverResponse) => {
         this.setState({
-          categories: serverResponse.data,
+          categories: currentUserCategories,
           categoryLinks: serverResponse.data.filter((c) => {
             return c.inNav
           })
