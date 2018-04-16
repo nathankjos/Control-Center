@@ -19,7 +19,13 @@ class Categories extends React.Component {
     componentDidMount() {
         const categoryId = this.props.match.params.id
         httpClient.getCategory(categoryId).then((serverResponse) =>{
-            this.setState({ category: serverResponse.data})
+        const { toDoList, notes, links } = serverResponse.data
+            this.setState({ 
+                category: serverResponse.data,
+                ToDoList: toDoList,
+                notes: notes,
+                links: links
+            })
         })
     }
 
@@ -38,17 +44,17 @@ class Categories extends React.Component {
     editCategory(){
         console.log('Clicked')
     }
-    onFormSubmit(evt) {
-        evt.preventDefault()
-        const data = { name: evt.target[0].value }
-		httpClient.createCategory(data).then(serverResponse => {
-            this.setState({ 
-                categories:[...this.state.categories, serverResponse.data.category],
-                newToDo: '',
-                modal: !this.state.modal
-            })
-		})
-    }
+    // onFormSubmit(evt) {
+    //     evt.preventDefault()
+    //     const data = { name: evt.target[0].value }
+	// 	httpClient.createCategory(data).then(serverResponse => {
+    //         this.setState({ 
+    //             categories:[...this.state.categories, serverResponse.data.category],
+    //             newToDo: '',
+    //             modal: !this.state.modal
+    //         })
+	// 	})
+    // }
     
     saveToDoList(){
         httpClient.saveToDoList()
@@ -57,12 +63,15 @@ class Categories extends React.Component {
     render() {
         return (
         <div className='content'>
-            <div className='CategoryName'><h1>{this.state.category.name}</h1><Button color='primary' className='editCategoryName'>edit</Button></div>
-            <div><button onClick={this.toggleLinks.bind(this)}>Links</button> <button onClick={this.toggleNotes.bind(this)}> Notes </button></div>
+            <div className='CategoryNameTitle'>
+                <h1 className='categoryTitle'>{this.state.category.name}</h1>
+                <Button color='primary' className='editCategoryName'>edit</Button>
+                <div className='LinksAndNotesBtns'><button onClick={this.toggleLinks.bind(this)}>Links</button> <button onClick={this.toggleNotes.bind(this)}> Notes </button></div>
+            </div>
 
             <div className='content3'>
                 <div className='panel'>
-                    <ToDoList onSaveToDoList={this.saveToDoList.bind(this)}/>
+                    <ToDoList onSaveToDoList={this.saveToDoList.bind(this)} />
                 </div>
 
                 <div className='panel'>

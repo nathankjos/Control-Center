@@ -39,9 +39,9 @@ class Settings extends React.Component {
 					<div className='column column-33 column-offset-33'>
                         <h1 className='categoryTitle'>Settings</h1>
                         <form onChange={this.onInputChange.bind(this)} onSubmit={this.onFormSubmit.bind(this)}>
-                            <div>Profile Picture:   <input className='settingsInput' type='text' name='imageUrl' placeholder={imageUrl}/></div>
-                            <div>Name:   <input className='settingsInput' type='text' name='name' placeholder={name}/></div>
-                            <div>LogIn Username/Email:   <input className='settingsInput' type='text' name='email' placeholder={email}/></div>
+                            <div>Profile Picture:   <input className='settingsInput input' type='text' name='imageUrl' placeholder={imageUrl}/></div>
+                            <div>Name:   <input className='settingsInput input' type='text' name='name' placeholder={name}/></div>
+                            <div>LogIn Username/Email:   <input className='settingsInput input' type='text' name='email' placeholder={email}/></div>
                             {/* <div>Password:   <input className='settingsInput' name='password' type='password' placeholder='* * * * * * * * * * * * *'/></div> */}
                             {/* <div><input type='checkbox' /><span>  Show Music Box</span></div>
                             <div><input type='checkbox' /><span>  Show Clock Box</span></div> */}

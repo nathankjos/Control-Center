@@ -23,12 +23,16 @@ class Notes extends Component {
 
     render() {
         return (
-            <div>Notes
-                <NotesList items={this.state.items} />
-                <form className="Notes" onSubmit={this.onSubmit}>
-                    <input value={this.state.input} onChange={this.onChange} />
-                    <button>Submit</button>
-                </form>
+            <div className='panelDiv'>
+                <div className='ListDiv'>
+                    <span className='notesLabel'>Notes</span>
+                    <div className='clearfix' />
+                    <form className='ListForm' onSubmit={this.onSubmit}>
+                        <input value={this.state.input} onChange={this.onChange} />
+                        <button>Submit</button>
+                    </form>
+                </div>
+                    <NotesList items={this.state.items} />
             </div>
         )
     }

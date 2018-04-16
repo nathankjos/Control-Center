@@ -18,7 +18,8 @@ class App extends React.Component {
       showMusic: false,
       showClock: false,
       categoryLinks: [],
-      categories: []
+      categories: [],
+      loggedIn: false
     }
 
     getCategories() {
@@ -32,12 +33,16 @@ class App extends React.Component {
       })
     }
 
+    componentWillMount() {
+      if(!this.state.currentUser) this.setState({ categoryLinks: [] })
+    }
+
     componentDidMount() {
       if(this.state.currentUser) this.getCategories()
     }
 
     onLoginSuccess(user) {
-      this.setState({ currentUser: httpClient.getCurrentUser() })
+      this.setState({ currentUser: httpClient.getCurrentUser(), login: true })
     }
   
     updateCurrentUser(token){
@@ -62,8 +67,9 @@ class App extends React.Component {
       const { currentUser, categoryLinks, categories } = this.state
     return (
       <div className="App">
-          {currentUser && <SideBar currentUser={currentUser} categoryLinks={categoryLinks}/> }
-
+          {currentUser && (<Route render={(props) => {
+            return <SideBar {...props} currentUser={currentUser} categoryLinks={categoryLinks} />
+          }} />)}
 
           <Switch>
             <Route exact path="/login" render={(props) => {

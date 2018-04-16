@@ -1,6 +1,7 @@
 html {
   min-width: 950px;
   background: rgba(74, 0, 117, 0.1);
+  height: 100%;
 }
 .SideBar {
   background: rgba(128, 0, 0, 0.9);
@@ -84,6 +85,7 @@ button{
 }
 .content {
   margin-left: 215px;
+  height: 100%;
 }
 .content2 {
   margin-top: 10px;
@@ -121,6 +123,11 @@ button{
 }
 .categoryNameForm{
   padding: 0 30px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
 }
 li{
   list-style: none !important;
@@ -169,15 +176,21 @@ li a {
   border-color: transparent;
 }
 .App{
+  position: absolute;
+  width: 100% !important;
+  height: 100% !important;
   background: rgba(74, 0, 117, 0.1);
 }
 .panel{
-  width: 48%
+  width: 48%;
+  display: flex;
+  justify-content: center;
+  height: 100%;
 }
 .ToDoList {
   background: white;
   margin-right: 0px;
-  height: 75vh;
+  height: 60%;
 }
 .LinksAndNotes {
   background: white;
@@ -185,6 +198,7 @@ li a {
   border: 1px solid black;
 }
 .content3 {
+  height: 90%;
   display: flex;
   align-content: flex-start;
 }
@@ -205,21 +219,41 @@ ul{
 
 }
 .categoryName h3 {
-  width: 150px;
-  height: 70px;
+  height: 100%;
+  width: 190px;
+  margin-bottom: 0;
+  vertical-align: middle;
 }
+.categoryName li {
+  height: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.categoryName a {
+  height: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
 .categoryName {
   display: flex;
+  justify-content: center;
+  align-content: center;
   flex-direction: row;
-  width: 250px;
+  width: 260px;
   padding: 0px;
   margin: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
 }
-.editCategories {
+.LinksAndNotesBtns {
   display: flex;
-  justify-content: space-between;
-  width: 48%;
-  margin-left: 52%;
+  justify-content: space-around;
+  width: 25%;
+  margin-left: 50%;
+  margin-right: 20px;
 }
 .selector{
   font-size: 7px;
@@ -232,8 +266,73 @@ ul{
   display: flex;
   text-align: center;
   flex-wrap: wrap;
-  max-width: 100%;
+  max-width: 95%;
 }
 .hideBtn{
   display: none;
+}
+.panel {
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .7);
+  margin: 0 auto 0 0;
+  min-width: 355px;
+}
+.contentContainer {
+  height: 100%;
+}
+.notesLabel {
+  float: left;
+}
+.ListDivTitle{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.ListDiv {
+  margin: 10px 5px 5px 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.ListForm {
+  margin-bottom: 0 !important;
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+.newCategoryBtnsDiv {
+  display: flex;
+  justify-content: space-between;
+}
+.editCategories {
+  display: flex;
+  justify-content: space-around;
+  width: 300px;
+  margin-left: 48%;
+}
+.input {
+  background: white !important;
+}
+.panelDiv {
+  width: 95%;
+  min-width: 340px;
+  height: 100%;
+}
+.CategoryNameTitle {
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  align-items: center;
+  margin-top: 5px;
+}
+.List{
+  height: 80%;
+}
+.categoryTitle{
+  margin-bottom: 0 !important;
+}
+.categoryBtns {
+  display: flex;
+  flex-direction: column;
 }

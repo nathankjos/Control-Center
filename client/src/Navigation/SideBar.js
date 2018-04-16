@@ -1,12 +1,12 @@
 import React from 'react'
 import NavBar from './NavBar'
 import { Button, Modal } from 'reactstrap'
-import { Link } from 'react-router-dom'
 
 class SideBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            categoryLinks: this.props.categoryLinks,
             currentUser: this.props.currentUser,
             newCategoryName: '',
             modal: false
@@ -15,12 +15,17 @@ class SideBar extends React.Component {
     }
     
     toggle() {
-        // console.log("show confirm modal")
-            // console.log(this.state.modal)
         this.setState({
             modal: !this.state.modal
         });
     }
+
+    logOutUser() {
+        this.setState({categoryLinks: [] })
+        console.log(this.props)
+        this.props.history.push('/logout')
+    }
+
     render(){
         const { currentUser } = this.props
         return (
@@ -30,7 +35,7 @@ class SideBar extends React.Component {
                         <br />
                         <h3 className='logoutH3'> Are you sure you would like to Log Out? </h3>
                         <br />
-                        <Link to='/logout' className='logOutBtn'><Button color='danger'>Yes</Button></Link>
+                        <Button onClick={this.logOutUser.bind(this)} className='logOutBtn' color='danger'>Yes</Button>
                     </div>
                 </Modal>
                 <div className='logout'><button onClick={this.toggle.bind(this)}>X</button></div>

@@ -19,8 +19,8 @@ httpClient.logIn = function(credentials) {
 	return this({ method: 'post', url: '/api/users/authenticate', data: credentials })
 		.then((serverResponse) => {
 			const token = serverResponse.data.token
+			console.log(token)
 			if(token) {
-				// console.log(token)
 				this.defaults.headers.common.token = this.setToken(token)
 				return jwtDecode(token)
 			} else {
@@ -49,8 +49,6 @@ httpClient.logOut = function() {
 	return true
 }
 
-
-
 httpClient.getCategories = function(){
 	return this({ method: 'get', url: '/api/categories'})
 }
@@ -78,7 +76,6 @@ httpClient.saveNotes = function(note, id) {
 httpClient.saveLinks = function(link, id) {
 	return this({ method: 'post', url: `/api/categories/${id}`, data: link})
 }
-
 
 httpClient.defaults.headers.common.token = httpClient.getToken()
 export default httpClient

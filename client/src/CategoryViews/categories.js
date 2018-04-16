@@ -93,24 +93,28 @@ class Categories extends React.Component {
                 <div className='categoryNameForm'>
                     <h3 className='categoryNameLabel'>New Category Name:</h3>
                     <Form onSubmit={this.onFormSubmit.bind(this)}className='categoryNameForm'>
-                        <Input className='categoryNameInput' name="newCategoryName"  placeholder="Name of New Category" />
-                        <Button color="primary" type='submit'>Save</Button>{' '}
-                        <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                        <Input className='categoryNameInput input' name="newCategoryName"  placeholder="Name of New Category" />
+                        <div className='newCategoryBtnsDiv'>
+                            <Button color="primary" type='submit'>Save</Button>{' '}
+                            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                        </div>
                     </Form>
                 </div>
             </Modal>
-            <div className='content2'>
+            <div>
                 <ul className='allCategories'>
                     {categories.map((c) => {
                         return(
                             <div className='categoryName' key={c._id}>
-                                <Button className={`selector ${navBtn}`} color='warning' onClick={this.addCategoryToNav.bind(this, c)}>add to nav</Button>
+                                <div className='categoryBtns'>
+                                    <Button className={`selector ${navBtn}`} color='warning' onClick={this.addCategoryToNav.bind(this, c)}>add to nav</Button>
+                                    <Button className={`selector ${deleteBtn}`} color='danger' onClick={this.deleteCategory.bind(this, c._id)}>Delete</Button>
+                                </div>
                                 <li>
                                     <Link to={`/categories/${c._id}`}>
-                                        <div><h3>{c.name}</h3></div>
+                                        <h3>{c.name}</h3>
                                     </Link>
                                 </li>
-                                <Button className={`selector ${deleteBtn}`} color='danger' onClick={this.deleteCategory.bind(this, c._id)}>Delete</Button>
                             </div>
                         )
                     })}

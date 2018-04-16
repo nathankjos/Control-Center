@@ -27,12 +27,16 @@ class Links extends Component {
 
     render() {
         return (
-            <div>Links
+            <div className='panelDiv'>
+                <div className='ListDiv'>
+                    <span className='notesLabel'>Links</span>
+                    <div className='clearfix' />
+                    <form className="ListForm" onSubmit={this.onSubmit}>
+                        <input value={this.state.input} onChange={this.onChange} />
+                        <button>Submit</button>
+                    </form>
+                </div>
                 <LinksList items={this.state.items} />
-                <form className="Links" onSubmit={this.onSubmit}>
-                    <input value={this.state.input} onChange={this.onChange} />
-                    <button>Submit</button>
-                </form>
             </div>
         )
     }
