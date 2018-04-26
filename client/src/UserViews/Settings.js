@@ -31,7 +31,7 @@ class Settings extends React.Component {
             <div className='Settings'>
                 <div className='row'>
 					<div className='column column-33 column-offset-33'>
-                        <h1 className='categoryTitle'>Settings</h1>
+                        <h1 className='settingsTitle'>Settings</h1>
                         <form onChange={this.onInputChange.bind(this)} onSubmit={this.onFormSubmit.bind(this)}>
                             <div>Profile Picture:   <input className='settingsInput input' type='text' name='imageUrl' placeholder={imageUrl}/></div>
                             <div>Name:   <input className='settingsInput input' type='text' name='name' placeholder={name}/></div>

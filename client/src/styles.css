@@ -8,6 +8,7 @@ html {
   width: 200px;
   height: 100%;
   position: fixed;
+  margin-left: -200px;
   float: left;
   border-radius: 5px;
 }
@@ -84,8 +85,8 @@ button{
   font-size: 9px;
 }
 .content {
-  margin-left: 215px;
   height: 100%;
+  margin: 0 15px;
 }
 .content2 {
   margin-top: 10px;
@@ -129,7 +130,7 @@ button{
   justify-content: space-between;
   height: 200px;
 }
-li{
+.MainNav li, .List li{
   list-style: none !important;
 }
 li a {
@@ -174,15 +175,20 @@ li a {
 }
 .App{
   position: absolute;
-  width: 100% !important;
+  width: 86%;
+  margin-left: 200px;
   height: 100% !important;
   background: rgba(74, 0, 117, 0.1);
 }
-.panel{
-  width: 48%;
-  display: flex;
+.panel {
+  display: inline-flex;
   justify-content: center;
   height: 100%;
+  border-radius: 10px;
+  width: 49%;
+  background: rgba(255, 255, 255, .7);
+  min-width: 390px;
+  margin-right: 1%;
 }
 .ToDoList {
   background: white;
@@ -195,10 +201,10 @@ li a {
   border: 1px solid black;
 }
 .content3 {
+  width: 85%;
+  position: fixed;
   min-width: 810px;
   height: 90%;
-  display: flex;
-  align-content: flex-start;
 }
 .newLink, .newNote, .newToDoItem {
   height: 25px;
@@ -247,12 +253,7 @@ ul{
   border-radius: 10px;
 }
 .LinksAndNotesBtns {
-  position: fixed;
-  display: flex;
-  -ms-flex-pack: distribute;
-  justify-content: space-around;
-  width: 25%;
-  margin-left: 60%;
+  float: right;
 }
 .selector{
   font-size: 7px;
@@ -270,12 +271,6 @@ ul{
 .hideBtn{
   display: none;
 }
-.panel {
-  border-radius: 10px;
-  background: rgba(255, 255, 255, .7);
-  margin: 0 auto 0 0;
-  min-width: 355px;
-}
 .contentContainer {
   height: 100%;
 }
@@ -288,8 +283,8 @@ ul{
   justify-content: space-around;
 }
 .ListDiv {
-  margin: 10px 5px 5px 5px;
-  width: 100%;
+  border-bottom: 1px solid rgba(128, 128, 128, .3);
+  margin: 10px 0px 5px 0px;  width: 100%;
   display: flex;
   justify-content: space-around;
 }
@@ -320,16 +315,16 @@ ul{
   height: 100%;
 }
 .CategoryNameTitle {
-  display: flex;
-  justify-content: space-between;
   height: 60px;
-  align-items: center;
-  margin-top: 5px;
 }
 .List{
-  height: 80%;
+  width: 97%;
+  height: 98%;
+  overflow-y: scroll;
+  max-height:90%;
 }
 .categoryTitle{
+  position: fixed;
   margin-bottom: 0 !important;
 }
 .categoryBtns {
@@ -339,4 +334,11 @@ ul{
 }
 .editCategoryInput {
   font-size: 20px;
+}
+.List li {
+  width: 98%;
+  border-bottom: 1px dashed rgba(100,100,100,0.2);
+}
+.LinksAndNotesBtns .btn {
+  margin: 15px;
 }

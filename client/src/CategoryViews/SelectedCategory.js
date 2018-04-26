@@ -102,14 +102,11 @@ class Categories extends React.Component {
     render() {
         const { categories } = this.props
         const categoryName = categories.filter((c) => {
-            console.log(c._id === this.props.match.params.id)
             return c._id === this.props.match.params.id
         })
-        console.log(categoryName)
         return (
         <div className='content'>
             <div className='CategoryNameTitle'>
-            {console.log(this.props.categories)}
                 <h1 className='categoryTitle'> {categoryName[0] && categoryName[0].name}
                 </h1>
                 <div className='LinksAndNotesBtns'>
