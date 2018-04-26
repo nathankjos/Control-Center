@@ -195,6 +195,7 @@ li a {
   border: 1px solid black;
 }
 .content3 {
+  min-width: 810px;
   height: 90%;
   display: flex;
   align-content: flex-start;
@@ -246,10 +247,12 @@ ul{
   border-radius: 10px;
 }
 .LinksAndNotesBtns {
+  position: fixed;
   display: flex;
+  -ms-flex-pack: distribute;
   justify-content: space-around;
   width: 25%;
-  margin-right: 20px;
+  margin-left: 60%;
 }
 .selector{
   font-size: 7px;
